@@ -58,8 +58,25 @@ body::before{
 .date{ font-weight:600; color:var(--accent-2) }
 .golden{ color:var(--gold) }
 
+/* Names vertical stack (Bride → Heart → Groom) */
+.names-vertical{ display:flex; flex-direction:column; align-items:center; gap:12px; margin:8px 0 18px }
+.names-vertical.reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease }
+.names-vertical.reveal.in-view{ opacity:1; transform:none }
+.bride-block, .groom-block{ text-align:center; max-width:760px }
+.main-name{ font-family:'Great Vibes','Parisienne',serif; font-size:68px; margin:0; color:var(--accent); line-height:1 }
+.groom-name{ color:var(--accent-2) }
+.name-details{ font-family:'Cormorant Garamond', serif; color:var(--muted); font-size:15px; margin-top:8px }
+.name-details div{ margin-top:6px }
+.divider-heart{ font-size:40px; color:var(--gold); margin:8px 0 }
+
+@media (max-width: 720px){
+  .main-name{ font-size:44px }
+  .divider-heart{ font-size:28px }
+  .name-details{ font-size:14px; max-width:100% }
+}
+
 /* Big single card wrapper */
-.big-card{ position:relative; max-width:calc(var(--container) + 40px); margin:24px auto; padding:22px; background:
+.big-card{ position:relative; z-index: 1; max-width:calc(var(--container) + 40px); margin:24px auto; padding:22px; background:
   linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,251,242,.98)),
   url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"><g fill="%23d4af3722"><path d="M40 4c2 6 6 10 12 12-6 2-10 6-12 12-2-6-6-10-12-12 6-2 10-6 12-12z"/></g></svg>') repeat; border:1.8px solid rgba(212,175,55,.55); border-radius:22px; box-shadow:0 22px 50px rgba(90,40,20,.10), inset 0 0 0 1px rgba(255,255,255,.65) }
 .big-card::before{ content:""; position:absolute; inset:0; pointer-events:none; 
@@ -152,6 +169,118 @@ input:focus,select:focus,textarea:focus{ outline:2px solid rgba(180,75,75,.25); 
   .nav-list.open{ max-height:280px }
   .event-grid{ grid-template-columns:1fr }
   .form-grid{ grid-template-columns:1fr }
+}
+
+/* Welcome Block */
+.welcome-block {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--bg);
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-block p {
+  margin: 0.75rem 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.welcome-block p:first-child {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.02em;
+}
+
+.welcome-block h2 {
+  color: var(--accent);
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  margin: 0.5rem 0;
+  font-weight: normal;
+  position: relative;
+  display: inline-block;
+}
+
+.welcome-block h2:after {
+  content: '';
+  position: absolute;
+  bottom: -0.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* Floating Background */
+.floating-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-bg span {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: float 15s infinite linear;
+}
+
+.float-1, .float-5 { 
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23b44b4b' opacity='.18' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+}
+
+.float-2, .float-6 { 
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d4af37' opacity='.15' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  width: 20px;
+  height: 20px;
+}
+
+.float-3, .float-7 { 
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23b44b4b' opacity='.12' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  width: 25px;
+  height: 25px;
+}
+
+.float-4, .float-8 { 
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d4af37' opacity='.14' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  width: 22px;
+  height: 22px;
+}
+
+.float-1 { left: 5%; animation-duration: 18s; animation-delay: 0s; }
+.float-2 { left: 20%; animation-duration: 14s; animation-delay: 2s; }
+.float-3 { left: 35%; animation-duration: 16s; animation-delay: 4s; }
+.float-4 { left: 50%; animation-duration: 20s; animation-delay: 6s; }
+.float-5 { left: 65%; animation-duration: 17s; animation-delay: 8s; }
+.float-6 { left: 80%; animation-duration: 15s; animation-delay: 10s; }
+.float-7 { left: 95%; animation-duration: 19s; animation-delay: 12s; }
+.float-8 { left: 12%; animation-duration: 13s; animation-delay: 14s; }
+
+@keyframes float {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(0deg);
+  }
+  15% {
+    opacity: 0.2;
+  }
+  85% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) rotate(360deg);
+  }
 }
 
 /* Print */
