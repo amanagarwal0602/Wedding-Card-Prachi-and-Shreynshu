@@ -174,32 +174,27 @@ input:focus,select:focus,textarea:focus{ outline:2px solid rgba(180,75,75,.25); 
 /* Welcome Block */
 .welcome-block {
   text-align: center;
-  padding: 2.5rem 1.5rem;
-  background: var(--bg);
+  padding: 2.5rem 1.5rem 2rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,247,236,.98));
   position: relative;
   z-index: 1;
+  border-bottom: 1px dashed rgba(201,154,74,.35);
+  margin: 0 -22px 2rem;
 }
 
-.welcome-block p {
-  margin: 0.75rem 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
-  line-height: 1.6;
-  color: var(--text);
-}
-
-.welcome-block p:first-child {
+.welcome-block .invocation {
   color: var(--gold);
   font-family: 'Cinzel', serif;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
 }
 
 .welcome-block h2 {
   color: var(--accent);
   font-family: 'Great Vibes', cursive;
-  font-size: 3.5rem;
-  margin: 0.5rem 0;
+  font-size: 4rem;
+  margin: 0 0 0.5rem;
   font-weight: normal;
   position: relative;
   display: inline-block;
@@ -211,9 +206,26 @@ input:focus,select:focus,textarea:focus{ outline:2px solid rgba(180,75,75,.25); 
   bottom: -0.25rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 120px;
   height: 1px;
-  background: var(--gold);
+  background: linear-gradient(90deg,var(--gold), var(--accent-2));
+  opacity: 0.8;
+  border-radius: 2px;
+}
+
+.welcome-block .welcome-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--text);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.welcome-block .hosts {
+  margin: 0.5rem 0;
+  color: var(--text);
+  font-weight: 600;
 }
 
 /* Floating Background */
